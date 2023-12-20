@@ -8,15 +8,21 @@ function search(str) {
 
 	// TODO
 
+	results = fruit.filter(str => {
+		return fruit.includes(str);
+	});
+
 	return results;
 }
 
 function searchHandler(e) {
-	// TODO
+	showSuggestions(search(input), input);
 }
 
 function showSuggestions(results, inputVal) {
-
+	const suggestionList = document.createElement("li");
+	suggestionList.innerHTML = results;
+	suggestions.append(suggestionList);
 	// TODO
 }
 
