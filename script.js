@@ -8,26 +8,30 @@ function search(str) {
 
 	// TODO
 
-	results = fruit.filter(str => {
-		return fruit.includes(str);
+	results = fruit.filter((searchVal) => {
+		return searchVal.toUpperCase().indexOf(str.toUpperCase()) != -1;
 	});
 
 	return results;
 }
 
 function searchHandler(e) {
-	showSuggestions(search(input), input);
+	showSuggestions(search(input.value), input);
 }
 
 function showSuggestions(results, inputVal) {
-	const suggestionList = document.createElement("li");
-	suggestionList.innerHTML = results;
-	suggestions.append(suggestionList);
+	suggestions.innerHTML = "";
+	for(let listItem of results) {
+		const suggestion = document.createElement("li");
+		suggestion.innerHTML = listItem;
+		suggestions.append(suggestion);
+	}
 	// TODO
 }
 
 function useSuggestion(e) {
 	// TODO
+	input.value = e.target.innerText;
 }
 
 input.addEventListener('keyup', searchHandler);
