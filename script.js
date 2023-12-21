@@ -6,8 +6,6 @@ const fruit = ['Apple', 'Apricot', 'Avocado 🥑', 'Banana', 'Bilberry', 'Blackb
 function search(str) {
 	let results = [];
 
-	// TODO
-
 	results = fruit.filter((searchVal) => {
 		return searchVal.toUpperCase().indexOf(str.toUpperCase()) != -1;
 	});
@@ -16,22 +14,22 @@ function search(str) {
 }
 
 function searchHandler(e) {
-	showSuggestions(search(input.value), input);
+	input.value == "" ? suggestions.innerHTML = "" : showSuggestions(search(input.value), input);
 }
 
 function showSuggestions(results, inputVal) {
 	suggestions.innerHTML = "";
-	for(let listItem of results) {
+
+	for (let listItem of results) {
 		const suggestion = document.createElement("li");
 		suggestion.innerHTML = listItem;
 		suggestions.append(suggestion);
 	}
-	// TODO
 }
 
 function useSuggestion(e) {
-	// TODO
 	input.value = e.target.innerText;
+	suggestions.innerHTML = "";
 }
 
 input.addEventListener('keyup', searchHandler);
